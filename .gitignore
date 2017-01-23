@@ -7,3 +7,6 @@
 
 # Ignore PyCharm configurations
 .idea/
+
+# Ignore json files
+*.json
