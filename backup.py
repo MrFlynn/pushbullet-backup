@@ -50,7 +50,10 @@ def main():
         push_list.extend(r.json().get("pushes"))
 
     # Generate filename for backup json file.
-    backup_file = "pushbullet-backup-{0}.json".format(time.strftime("%d/%m/%Y"))
+    backup_file = "pushbullet-backup-{0}.json".format(time.strftime("%d-%m-%Y"))
+
+    # Create file if it doesn't exist already.
+    open(backup_file, "a").close()
 
     with open(backup_file, "w") as output:
         json.dump(push_list, output)
