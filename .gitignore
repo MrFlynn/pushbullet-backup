@@ -1,0 +1,9 @@
+# Ignore testing config file and python bytecode
+*.ini
+*.pyc
+
+# Ignore .DS_Store
+.DS_Store
+
+# Ignore PyCharm configurations
+.idea/
