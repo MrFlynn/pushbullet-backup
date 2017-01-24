@@ -31,6 +31,6 @@ Rename `config.ini.stub` to `config.ini` and open the file with your favorite te
 
 Just run `python3 backup.py` to start the application. 
 
-This might take some time based on your internet speed or if Pushbullet decides to rate limit you (**NOTE:** I do *not* to take responsibility if this happens and you get an email from Pushbullet telling you to stop—it was your choice to run this application in the first place.)
+This might take some time depending on your internet speed or if Pushbullet decides to rate limit you (**NOTE:** I do *not* to take responsibility if this happens and you get an email from Pushbullet telling you to stop—it was your choice to run this application in the first place).
 
 A json file with the name `pushbullet-backup-<day>-<month>-<year>.json` will be written to the directory where the application was run.
