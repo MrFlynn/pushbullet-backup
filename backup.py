@@ -4,6 +4,8 @@
 import requests
 import configparser
 import time
+import glob
+import sys
 import json
 
 
@@ -45,6 +47,7 @@ def main():
         if isinstance(r.json().get("cursor"), str):
             cursor = r.json().get("cursor")
         else:
+            print("Pushes downloaded. Writing to file...")
             break
 
         push_list.extend(r.json().get("pushes"))
@@ -52,9 +55,20 @@ def main():
     # Generate filename for backup json file.
     backup_file = "pushbullet-backup-{0}.json".format(time.strftime("%d-%m-%Y"))
 
-    # Create file if it doesn't exist already.
-    open(backup_file, "a").close()
+    if not glob.glob(backup_file):
+        # Create file if it doesn't exist already.
+        open(backup_file, "a").close()
+    else:
+        answer = input("Old backup file will be overwritten. Continue (y/n): ")
 
+        if answer.lower() == 'y':
+            # Empty the file if it does exist.
+            open(backup_file, "w").close()
+        else:
+            print("Application terminating...")
+            sys.exit()
+
+    # Write contents to file.
     with open(backup_file, "w") as output:
         json.dump(push_list, output)
 
